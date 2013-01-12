@@ -3,7 +3,7 @@ source :rubygems
 # Dependencies specified in opal-rails.gemspec
 gemspec
 
-
+gem 'opal',        :git => "git@github.com:roblander/opal.git"
 gem 'opal-jquery', :require => false
 gem 'opal-spec',   :git => 'git://github.com/opal/opal-spec.git',   :require => false
 
