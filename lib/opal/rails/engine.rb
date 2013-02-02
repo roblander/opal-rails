@@ -7,7 +7,7 @@ module Opal
 
       # Cache eager_load_paths now, otherwise the assets dir is added
       # and its .rb files are eagerly loaded.
-      config.eager_load_paths
+      config.autoload_paths
     end
   end
 end
