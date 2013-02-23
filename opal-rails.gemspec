@@ -23,4 +23,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rails'
   s.add_development_dependency 'rspec', '~> 2.4'
   s.add_development_dependency 'rspec-rails', '~> 2.4'
+
+  s.add_development_dependency 'capybara',    '< 2'
+  s.add_development_dependency 'launchy'
+  s.add_development_dependency 'execjs'
 end

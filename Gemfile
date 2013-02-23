@@ -1,6 +1,4 @@
 source :rubygems
-
-# Dependencies specified in opal-rails.gemspec
 gemspec
 
 gem 'opal',        :git => "git@github.com:roblander/opal.git"
