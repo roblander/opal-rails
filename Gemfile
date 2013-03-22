@@ -1,7 +1,7 @@
 source :rubygems
 gemspec
 
-gem 'opal'
+gem 'opal',        '= 0.3.36'
 gem 'opal-jquery', :require => false
 gem 'opal-spec',   :git => 'git://github.com/opal/opal-spec.git',   :require => false
 
