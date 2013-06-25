@@ -2,8 +2,9 @@
 
 [![Build Status](https://secure.travis-ci.org/elia/opal-rails.png)](http://travis-ci.org/elia/opal-rails)
 [![Code Climate](https://codeclimate.com/github/elia/opal-rails.png)](https://codeclimate.com/github/elia/opal-rails)
+[![Gem Version](https://badge.fury.io/rb/opal-rails.png)](http://badge.fury.io/rb/opal-rails)
 
-_Rails (3.2+, 4.0) bindings for [Opal Ruby](http://opalrb.org) engine._
+_Rails (3.2+, 4.0) bindings for [Opal Ruby](http://opalrb.org) engine. ([Changelog](https://github.com/opal/opal-rails/blob/master/CHANGELOG.md))_
 
 
 
@@ -20,6 +21,29 @@ or when you build your new Rails app:
 ```bash
 rails new <app-name> --javascript=opal
 ```
+
+
+### Configuration
+
+Add your configuration in `config/application.rb` with the following contents:
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    # These are the available options with their default value:
+    config.opal.method_missing      = true
+    config.opal.optimized_operators = true
+    config.opal.arity_check         = false
+    config.opal.const_missing       = true
+  end
+end
+```
+
+
+### Gotchas
+
+After changing the version of the `opal` gem (e.g. via `bundle update opal`) or any configuration flag **you should trash the `#{Rails.root}/tmp/cache/assets` folder**, otherwise you could see a cached source compiled before the change.
+
 
 
 ## Usage

@@ -1,29 +1,10 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'opal',        '= 0.3.36'
-gem 'opal-jquery', :require => false
-gem 'opal-spec',   :git => 'git://github.com/opal/opal-spec.git',   :require => false
+gem 'capybara-webkit' unless ENV['CI']
+gem 'opal',        :github => 'opal/opal'
+gem 'opal-jquery', :github => 'opal/opal-jquery'
 
-
-# Test app stuff
-
-gem 'rails'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
-end
-
-gem 'jquery-rails'
-
-group :test do
-  gem 'capybara'
-  gem 'launchy'
+if RUBY_VERSION.to_f == 1.8
+  gem 'nokogiri', '< 1.6'
 end
