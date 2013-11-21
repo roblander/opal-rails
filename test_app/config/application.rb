@@ -8,7 +8,7 @@ require File.expand_path('../boot', __FILE__)
 # require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
+require "active_resource/railtie" unless Rails.version.to_i == 4
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
@@ -68,5 +68,8 @@ module TestApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Disabled by default, we need it for tests
+    config.opal.source_map_enabled = true
   end
 end

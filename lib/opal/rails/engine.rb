@@ -5,8 +5,8 @@ require 'opal/sprockets/processor'
 module Opal
   module Rails
     class Engine < ::Rails::Engine
-      
       config.app_generators.javascript_engine :opal
+
       config.opal = ActiveSupport::OrderedOptions.new
 
 
@@ -25,16 +25,20 @@ module Opal
       end
 
       config.after_initialize do |app|
+        require 'opal/rails/haml_filter' if defined?(Haml)
+
+        config = app.config
         config.opal.each_pair do |key, value|
           key = "#{key}="
           Opal::Processor.send(key, value) if Opal::Processor.respond_to? key
         end
 
-        config = app.config
-        maps_app = Opal::SourceMapServer.new(app.assets)
-
         app.routes.prepend do
-          mount maps_app => maps_app.prefix
+          if config.opal.source_map_enabled
+            maps_app = Opal::SourceMapServer.new(app.assets)
+            mount maps_app => maps_app.prefix
+          end
+
           get '/opal_spec' => 'opal_spec#run'
         end
       end
